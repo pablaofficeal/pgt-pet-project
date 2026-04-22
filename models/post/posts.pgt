@@ -1,0 +1,4 @@
+package post
+
+// Posts are stored in data/posts.json.
+// HTTP handlers for posts live in api/posts.pgt.

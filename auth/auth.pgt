@@ -1,0 +1,71 @@
+package auth
+
+from "models/init" import save_user
+
+function(register_page) {
+    return read::file("static/register.html")
+    return 1
+}
+
+function(login_page) {
+    return read::file("static/login.html")
+    return 1
+}
+
+function(register_css) {
+    return read::file("static/css/register.css")
+    return 1
+}
+
+function(register_js) {
+    return read::file("static/js/register.js")
+    return 1
+}
+
+function(login_css) {
+    return read::file("static/css/login.css")
+    return 1
+}
+
+function(login_js) {
+    return read::file("static/js/login.js")
+    return 1
+}
+
+function(register_user) {
+    payload + object = request::json()
+    name + string = json::get(payload, "name")
+    email + string = json::get(payload, "email")
+    password + string = json::get(payload, "password")
+    existing + object = orm::find("User", "email", email)
+    if (json::stringify(existing) != "{}") {
+        return json::object("error", "email already registered")
+    }
+    password_hash + string = auth::hash_password(password)
+    save_user(json::object("name", name, "email", email, "password", password_hash, "is_active", true))
+    return json::object("status", "registered", "email", email)
+    return 1
+}
+
+function(login_user) {
+    payload + object = request::json()
+    email + string = json::get(payload, "email")
+    password + string = json::get(payload, "password")
+    user + object = orm::find("User", "email", email)
+    if (json::stringify(user) != "{}") {
+        password_hash + string = json::get(user, "password")
+        if (auth::verify_password(password, password_hash)) {
+            token + string = jwt::sign(json::object("sub", json::get(user, "id"), "email", email), "change-me-secret")
+            return json::object("token", token, "user", json::object("id", json::get(user, "id"), "email", email, "name", json::get(user, "name")))
+        }
+    }
+    return json::object("error", "invalid credentials")
+    return 1
+}
+
+function(verify_token) {
+    payload + object = request::json()
+    token + string = json::get(payload, "token")
+    return json::object("valid", jwt::verify(token, "change-me-secret"))
+    return 1
+}

@@ -1,0 +1,36 @@
+package routes
+
+from "api" import index, api, comments_api, reactions_api, index_css, index_js
+from "api/posts" import posts_api, post_page, post_css, post_js, comment_by_post_api, reaction_by_post_api
+from "sweiger" import docs, openapi_yaml
+from "auth" import register_page, login_page, register_css, register_js, login_css, login_js, register_user, login_user, verify_token
+
+function(register) {
+    web::route("/", "index")
+    web::get("/post", "post_page")
+    web::get("/api", "api")
+    web::post("/api", "api")
+    web::get("/api/posts", "posts_api")
+    web::get("/api/comments", "comments_api")
+    web::post("/api/comments", "comments_api")
+    web::post("/api/comments/by-post", "comment_by_post_api")
+    web::get("/api/reactions", "reactions_api")
+    web::post("/api/reactions", "reactions_api")
+    web::post("/api/reactions/by-post", "reaction_by_post_api")
+    web::get("/static/css/index.css", "index_css")
+    web::get("/static/css/post.css", "post_css")
+    web::get("/static/js/index.js", "index_js")
+    web::get("/static/js/post.js", "post_js")
+    web::get("/api/v1/docs", "docs")
+    web::get("/api/v1/openapi.yaml", "openapi_yaml")
+    web::get("/static/css/register.css", "register_css")
+    web::get("/static/js/register.js", "register_js")
+    web::get("/static/css/login.css", "login_css")
+    web::get("/static/js/login.js", "login_js")
+    web::get("/auth/register", "register_page")
+    web::get("/auth/login", "login_page")
+    web::post("/auth/register", "register_user")
+    web::post("/auth/login", "login_user")
+    web::post("/auth/verify", "verify_token")
+    return 1
+}

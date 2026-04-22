@@ -1,0 +1,42 @@
+package init
+
+from "../user" import User
+from "../comment" import Comment
+from "../reaction" import Reaction
+
+function(migrate) {
+    orm::migrate("User")
+    orm::migrate("Comment")
+    orm::migrate("Reaction")
+    return 1
+}
+
+function(save, data + object) {
+    orm::save("User", data)
+    return 1
+}
+
+function(save_user, data + object) {
+    orm::save("User", data)
+    return 1
+}
+
+function(save_comment, data + object) {
+    orm::save("Comment", data)
+    return 1
+}
+
+function(list_comments) {
+    return json::parse("[]")
+    return 1
+}
+
+function(save_reaction, data + object) {
+    orm::save("Reaction", data)
+    return 1
+}
+
+function(list_reactions) {
+    return json::parse("[]")
+    return 1
+}

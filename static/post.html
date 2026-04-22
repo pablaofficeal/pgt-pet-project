@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PGT Blog Post</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/post.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="/">PGT Blog Lab</a>
+        <nav class="nav-links" aria-label="Primary">
+            <a href="/auth/login">Login</a>
+            <a href="/auth/register">Register</a>
+            <a href="/api/v1/docs">API docs</a>
+        </nav>
+    </header>
+
+    <main class="post-main">
+        <p id="status" class="status post-status" role="status">Loading post...</p>
+        <article id="post-view" class="post-view"></article>
+    </main>
+
+    <script src="/static/js/post.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": "pgt-json-blog",
+      "title": "JSON posts on a tiny PGT backend",
+      "excerpt": "A plain file powers the feed while the server keeps the page dynamic.",
+      "body": "This post is loaded from data/posts.json, delivered by a PGT route, and rendered entirely in the browser. It is intentionally simple so the language runtime can show off file IO, JSON, HTTP routes, and a clean frontend loop.",
+      "author": "Pabla",
+      "published_at": "2026-04-22",
+      "read_time": "4 min",
+      "likes": 18,
+      "dislikes": 1,
+      "tags": ["pgt", "json", "backend"]
+    },
+    {
+      "id": "sqlite-comments",
+      "title": "Comments live in SQLite",
+      "excerpt": "Users and comments go through ORM models while posts stay lightweight.",
+      "body": "The post text remains in JSON, but comments are written through the Comment model into app.sqlite. That makes the demo feel like a real blog without forcing every bit of content into the database.",
+      "author": "Interpreter Lab",
+      "published_at": "2026-04-22",
+      "read_time": "3 min",
+      "likes": 11,
+      "dislikes": 0,
+      "tags": ["sqlite", "orm", "comments"]
+    },
+    {
+      "id": "dynamic-page",
+      "title": "The page hydrates itself",
+      "excerpt": "The HTML stays lean and JavaScript builds the entire reading experience.",
+      "body": "The browser fetches posts, comments, and reactions, then composes the page from live data. Like and dislike clicks are sent back as reaction rows so the UI can keep moving without mutating the post JSON.",
+      "author": "Runtime Notes",
+      "published_at": "2026-04-22",
+      "read_time": "5 min",
+      "likes": 24,
+      "dislikes": 2,
+      "tags": ["javascript", "fetch", "ui"]
+    }
+  ]
+}

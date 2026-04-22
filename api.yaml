@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: jjjsksks API
+  version: 0.1.0
+paths:
+  /:
+    get:
+      summary: Index route
+      responses:
+        "200":
+          description: OK
+  /post:
+    get:
+      summary: Dynamic blog post page
+      responses:
+        "200":
+          description: Post page shell
+  /api:
+    get:
+      summary: Default API status
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Save JSON payload
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Saved
+  /api/posts:
+    get:
+      summary: List JSON-backed blog posts
+      responses:
+        "200":
+          description: Blog post feed
+  /api/comments:
+    get:
+      summary: Runtime-safe comment feed endpoint
+      responses:
+        "200":
+          description: Comment array for the dynamic page
+    post:
+      summary: Save a comment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Comment saved and returned from database
+  /api/comments/by-post:
+    post:
+      summary: Find a stored comment by post id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: First matching comment row
+  /api/reactions:
+    get:
+      summary: Runtime-safe reaction feed endpoint
+      responses:
+        "200":
+          description: Reaction array for the dynamic page
+    post:
+      summary: Save a like or dislike
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Reaction saved and returned from database
+  /api/reactions/by-post:
+    post:
+      summary: Find a stored reaction by post id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: First matching reaction row
+  /api/v1/docs:
+    get:
+      summary: Swagger UI
+      responses:
+        "200":
+          description: Swagger documentation
+  /api/v1/openapi.yaml:
+    get:
+      summary: OpenAPI YAML
+      responses:
+        "200":
+          description: API specification
+  /auth/register:
+    post:
+      summary: Register user
+      responses:
+        "200":
+          description: Registered
+  /auth/login:
+    post:
+      summary: Login user and return JWT
+      responses:
+        "200":
+          description: JWT token
+  /auth/verify:
+    post:
+      summary: Verify JWT token
+      responses:
+        "200":
+          description: Token status

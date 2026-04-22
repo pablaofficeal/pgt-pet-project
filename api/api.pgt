@@ -1,0 +1,51 @@
+package api
+
+from "models/init" import save, save_comment, save_reaction
+
+function(index) {
+    return read::file("static/index.html")
+    return 1
+}
+
+function(api) {
+    if (request::method() == "POST") {
+        save(request::json())
+        return json::object("status", "saved")
+    }
+    return "I am working"
+    return 1
+}
+
+function(comments_api) {
+    if (request::method() == "POST") {
+        payload + object = request::json()
+        created_at + string = json::get(payload, "created_at")
+        save_comment(payload)
+        comment + object = orm::find("Comment", "created_at", created_at)
+        return json::object("status", "comment_saved", "comment", comment)
+    }
+    return json::parse("[]")
+    return 1
+}
+
+function(reactions_api) {
+    if (request::method() == "POST") {
+        payload + object = request::json()
+        created_at + string = json::get(payload, "created_at")
+        save_reaction(payload)
+        reaction + object = orm::find("Reaction", "created_at", created_at)
+        return json::object("status", "reaction_saved", "reaction", reaction)
+    }
+    return json::parse("[]")
+    return 1
+}
+
+function(index_css) {
+    return read::file("static/css/index.css")
+    return 1
+}
+
+function(index_js) {
+    return read::file("static/js/index.js")
+    return 1
+}

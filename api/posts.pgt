@@ -1,0 +1,35 @@
+package api
+
+function(posts_api) {
+    return json::read("data/posts.json")
+    return 1
+}
+
+function(post_page) {
+    return read::file("static/post.html")
+    return 1
+}
+
+function(post_css) {
+    return read::file("static/css/post.css")
+    return 1
+}
+
+function(post_js) {
+    return read::file("static/js/post.js")
+    return 1
+}
+
+function(comment_by_post_api) {
+    payload + object = request::json()
+    post_id + string = json::get(payload, "post_id")
+    return orm::find("Comment", "post_id", post_id)
+    return 1
+}
+
+function(reaction_by_post_api) {
+    payload + object = request::json()
+    post_id + string = json::get(payload, "post_id")
+    return orm::find("Reaction", "post_id", post_id)
+    return 1
+}

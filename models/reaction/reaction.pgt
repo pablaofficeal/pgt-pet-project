@@ -1,0 +1,9 @@
+package reaction
+
+class Reaction(db.Model) {
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.String(80))
+    user_id = db.Column(db.String(80))
+    kind = db.Column(db.String(20))
+    created_at = db.Column(db.String(80))
+}
