@@ -1,5 +1,19 @@
 # jjjsksks
 
+the interpreter is here
+
+```
+https://github.com/PGT-language/start-compilers
+```
+
+start use project
+
+```
+https://github.com/PGT-language/start-compilers.git
+cd start-compilers
+python3 instal.py
+```
+
 Generated with `pgt init backend jjjsksks`.
 
 ## Structure
