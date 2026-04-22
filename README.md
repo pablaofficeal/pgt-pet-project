@@ -9,7 +9,7 @@ https://github.com/PGT-language/start-compilers
 start use project
 
 ```
-https://github.com/PGT-language/start-compilers.git
+git clone https://github.com/PGT-language/start-compilers.git
 cd start-compilers
 python3 instal.py
 ```
