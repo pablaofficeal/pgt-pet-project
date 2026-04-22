@@ -11,7 +11,7 @@ start use project
 ```
 git clone https://github.com/PGT-language/start-compilers.git
 cd start-compilers
-python3 instal.py
+python3 install.py
 ```
 
 Generated with `pgt init backend jjjsksks`.
