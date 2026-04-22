@@ -3,8 +3,8 @@ package runtime
 from "components/logging" import to_file, info
 from "models/init" import migrate
 
-function(setup) {
-    to_file("server.log")
+function(setup ){
+    log_file("server.log")
     info("starting backend")
     sql::open("app.sqlite")
     migrate()
